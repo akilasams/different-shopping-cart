@@ -1,4 +1,4 @@
-# different-eng-shopping-cart-assignment
+# Different Engineering Shopping Cart Assignment
 
 # Requirements
 
@@ -21,4 +21,10 @@ To run the tests and see test coverage,run the below command
 
 ```bash
 npm test
+```
+
+To get the detailed coverage report in html, run the below command
+
+```bash
+npm run coverage
 ```
