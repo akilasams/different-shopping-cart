@@ -19,6 +19,16 @@ const SALES_TAX_RATE = 0.125;
 
 let shoppingCart = [];
 
+describe('Test to Round Numbers', () => {
+  it('0.475 should return 0.48', () => {
+    expect(cart.roundNum(0.475, 2)).to.equal(0.48);
+  });
+
+  it('0.4749 should return 0.47', () => {
+    expect(cart.roundNum(0.4749, 2)).to.equal(0.47);
+  });
+});
+
 describe('1) Scenario 1', () => {
   it('Have an empty shopping cart', () => {
     shoppingCart = [];
@@ -80,15 +90,5 @@ describe('3) Scenario 3', () => {
     expect(cart.calculateTotalWithTax(shoppingCart, SALES_TAX_RATE)).to.equal(
       337.46
     );
-  });
-});
-
-describe('Test to Round Numbers', () => {
-  it('337.455 should return 337.46', () => {
-    expect(cart.roundNum(337.455, 2)).to.equal(337.46);
-  });
-
-  it('37.495 should return 37.5', () => {
-    expect(cart.roundNum(37.495, 2)).to.equal(37.5);
   });
 });

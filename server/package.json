@@ -4,8 +4,9 @@
   "description": "Internship assignment",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
-    "start": "nodemon index.js"
+    "test": "nyc mocha",
+    "start": "nodemon index.js",
+    "coverage": "nyc --reporter=html mocha"
   },
   "author": "Akila Samarawickrama",
   "license": "ISC",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.1.4",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0"
   }
 }

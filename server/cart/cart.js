@@ -42,7 +42,7 @@ const calculateTotal = (cart) => {
   cart.forEach((item) => {
     total += item.unitPrice * item.quantity;
   });
-  var result = Number.parseFloat(total.toFixed(2));
+  var result = roundNum(total, 2);
   return result;
 };
 
@@ -64,6 +64,7 @@ function roundNum(num, length) {
 }
 
 module.exports = {
+  findItem,
   addItem,
   quantityInCart,
   calculateTotal,
