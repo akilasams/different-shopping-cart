@@ -50,12 +50,12 @@ describe('2) Scenario 2', () => {
     expect(shoppingCart.length).to.equal(0);
   });
 
-  it('Add 5 shower gels to cart should return quantity of 5 in the cart', () => {
+  it('Adding 5 shower gels to cart should return quantity of 5 in the cart', () => {
     cart.addItem(shop, shoppingCart, 1, 5);
     expect(cart.quantityInCart(shoppingCart)).to.equal(5);
   });
 
-  it('Add 3 more shower gels to cart should return quantity of 8 in the cart', () => {
+  it('Adding 3 more shower gels to cart should return quantity of 8 in the cart', () => {
     cart.addItem(shop, shoppingCart, 1, 3);
     expect(cart.quantityInCart(shoppingCart)).to.equal(8);
   });
@@ -71,14 +71,18 @@ describe('3) Scenario 3', () => {
     expect(shoppingCart.length).to.equal(0);
   });
 
-  it('Add 2 shower gels to cart should return quantity of 2 in the cart', () => {
+  it('Adding 2 shower gels to cart should return quantity of 2 in the cart', () => {
     cart.addItem(shop, shoppingCart, 1, 2);
     expect(cart.quantityInCart(shoppingCart)).to.equal(2);
   });
 
-  it('Add 2 deodrants to cart should return quantity of 4 in the cart', () => {
+  it('Adding 2 deodrants to cart should return quantity of 4 in the cart', () => {
     cart.addItem(shop, shoppingCart, 2, 2);
     expect(cart.quantityInCart(shoppingCart)).to.equal(4);
+  });
+
+  it('Total of tex for the items in cart should return 37.50', () => {
+    expect(cart.calculateTotalTax(shoppingCart, SALES_TAX_RATE)).to.equal(37.5);
   });
 
   it('Total of the items in cart should return 337.46', () => {

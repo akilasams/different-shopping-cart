@@ -31,7 +31,7 @@ const quantityInCart = (cart) => {
 const calculateTotalTax = (cart, taxRate) => {
   var totalTax = 0;
   cart.forEach((item) => {
-    totalTax = item.unitPrice * item.quantity * taxRate;
+    totalTax += item.unitPrice * item.quantity * taxRate;
   });
   var result = Number.parseFloat(totalTax.toFixed(2));
   return result;
@@ -47,9 +47,12 @@ const calculateTotal = (cart) => {
 };
 
 const calculateTotalWithTax = (cart, taxRate) => {
-  var total = calculateTotal(cart);
-  var totalTax = calculateTotalTax(cart, taxRate);
-  var result = total + totalTax;
+  var totalWithTax = 0;
+  cart.forEach((item) => {
+    totalWithTax +=
+      item.unitPrice * item.quantity + item.unitPrice * item.quantity * taxRate;
+  });
+  var result = Number.parseFloat(totalWithTax.toFixed(2));
   return result;
 };
 
@@ -58,5 +61,6 @@ module.exports = {
   addItem,
   quantityInCart,
   calculateTotal,
+  calculateTotalTax,
   calculateTotalWithTax,
 };
