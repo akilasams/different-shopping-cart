@@ -7,16 +7,38 @@ const addItem = (shop, cart, itemId, quantity) => {
   const itemInShop = findItem(shop, itemId);
   const itemInCart = findItem(cart, itemId);
 
-  if (itemInCart == null) {
-    const cartItem = { ...itemInShop, quantity: quantity };
-    cart.push(cartItem);
-  } else {
-    for (var i in cart) {
-      if (cart[i].itemId === itemId) {
-        cart[i].quantity += quantity;
-        break;
-      } else continue;
+  if (itemInShop != null) {
+    if (itemInCart == null) {
+      if (quantity <= itemInShop.quantity) {
+        // const cartItem = { ...itemInShop, quantity: quantity };
+        // for (var i in shop) {
+        //   if (shop[i].itemId === itemId) {
+        //     shop[i].quantity -= quantity;
+        //     break;
+        //   } else continue;
+        // }
+        updateQuantity;
+        cart.push(cartItem);
+      } else throw new Error('Not enough stock available');
+    } else {
+      // for (var i in cart) {
+      //   if (cart[i].itemId === itemId) {
+      //     cart[i].quantity += quantity;
+      //     break;
+      //   } else continue;
+      // }
+      updateQuantity(shop, itemId, -quantity);
+      updateQuantity(cart, itemId, quantity);
     }
+  } else throw new Error('No Such Item available in the Shop');
+};
+
+const updateQuantity = (dataArray, itemId, quantity) => {
+  for (var i in dataArray) {
+    if (dataArray[i].itemId === itemId) {
+      dataArray[i].quantity += quantity;
+      break;
+    } else continue;
   }
 };
 
@@ -48,10 +70,16 @@ const calculateTotal = (cart) => {
 
 const calculateTotalWithTax = (cart, taxRate) => {
   var totalWithTax = 0;
-  cart.forEach((item) => {
-    totalWithTax +=
-      item.unitPrice * item.quantity + item.unitPrice * item.quantity * taxRate;
-  });
+
+  if (cart.length !== 0) {
+    cart.forEach((item) => {
+      totalWithTax +=
+        item.unitPrice * item.quantity +
+        item.unitPrice * item.quantity * taxRate;
+    });
+  } else {
+  }
+
   var result = roundNum(totalWithTax, 2);
   return result;
 };

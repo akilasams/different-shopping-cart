@@ -7,11 +7,13 @@ const shop = [
     itemId: 1,
     itemName: 'Shower Gel',
     unitPrice: 49.99,
+    stock: 50,
   },
   {
     itemId: 2,
     itemName: 'Deodrant',
     unitPrice: 99.99,
+    stock: 50,
   },
 ];
 
