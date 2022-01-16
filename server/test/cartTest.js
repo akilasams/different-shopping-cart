@@ -19,15 +19,6 @@ const SALES_TAX_RATE = 0.125;
 
 let shoppingCart = [];
 
-describe('Cart Functionality', () => {
-  it('Item should should not return a null', () => {
-    let result = cart.findItem(shop, 001);
-    expect(result).to.not.be.null;
-  });
-});
-
-//==================================================================
-
 describe('1) Scenario 1', () => {
   it('Have an empty shopping cart', () => {
     shoppingCart = [];
@@ -81,7 +72,7 @@ describe('3) Scenario 3', () => {
     expect(cart.quantityInCart(shoppingCart)).to.equal(4);
   });
 
-  it('Total of tex for the items in cart should return 37.50', () => {
+  it('Total of tax for the items in cart should return 37.50', () => {
     expect(cart.calculateTotalTax(shoppingCart, SALES_TAX_RATE)).to.equal(37.5);
   });
 
@@ -89,5 +80,15 @@ describe('3) Scenario 3', () => {
     expect(cart.calculateTotalWithTax(shoppingCart, SALES_TAX_RATE)).to.equal(
       337.46
     );
+  });
+});
+
+describe('Test to Round Numbers', () => {
+  it('337.455 should return 337.46', () => {
+    expect(cart.roundNum(337.455, 2)).to.equal(337.46);
+  });
+
+  it('37.495 should return 37.5', () => {
+    expect(cart.roundNum(37.495, 2)).to.equal(37.5);
   });
 });

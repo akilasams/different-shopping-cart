@@ -33,7 +33,7 @@ const calculateTotalTax = (cart, taxRate) => {
   cart.forEach((item) => {
     totalTax += item.unitPrice * item.quantity * taxRate;
   });
-  var result = Number.parseFloat(totalTax.toFixed(2));
+  var result = roundNum(totalTax, 2);
   return result;
 };
 
@@ -52,15 +52,22 @@ const calculateTotalWithTax = (cart, taxRate) => {
     totalWithTax +=
       item.unitPrice * item.quantity + item.unitPrice * item.quantity * taxRate;
   });
-  var result = Number.parseFloat(totalWithTax.toFixed(2));
+  var result = roundNum(totalWithTax, 2);
   return result;
 };
 
+function roundNum(num, length) {
+  var multiplicator = Math.pow(10, length);
+  num = parseFloat((num * multiplicator).toFixed(11));
+  number = Math.round(num) / multiplicator;
+  return number;
+}
+
 module.exports = {
-  findItem,
   addItem,
   quantityInCart,
   calculateTotal,
   calculateTotalTax,
   calculateTotalWithTax,
+  roundNum,
 };
