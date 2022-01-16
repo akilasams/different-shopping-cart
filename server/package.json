@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc mocha",
-    "start": "nodemon index.js",
+    "start": "nodemon app.js",
     "coverage": "nyc --reporter=html mocha"
   },
   "author": "Akila Samarawickrama",

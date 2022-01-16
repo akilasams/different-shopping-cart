@@ -29,7 +29,7 @@ describe('Test to Round Numbers', () => {
   });
 });
 
-describe('1) Scenario 1', () => {
+describe('1) Step 1: Add products to the shopping cart.', () => {
   it('Have an empty shopping cart', () => {
     shoppingCart = [];
     expect(shoppingCart.length).to.equal(0);
@@ -45,7 +45,7 @@ describe('1) Scenario 1', () => {
   });
 });
 
-describe('2) Scenario 2', () => {
+describe('2) Step 2: Add additional products of the same type to the shopping cart.', () => {
   it('Have an empty shopping cart', () => {
     shoppingCart = [];
     expect(shoppingCart.length).to.equal(0);
@@ -66,7 +66,7 @@ describe('2) Scenario 2', () => {
   });
 });
 
-describe('3) Scenario 3', () => {
+describe('3) Step 3: Calculate the tax rate of the shopping cart with multiple items.', () => {
   it('Have an empty shopping cart', () => {
     shoppingCart = [];
     expect(shoppingCart.length).to.equal(0);
