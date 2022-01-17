@@ -18,12 +18,12 @@ const addItem = (shop, cart, itemId, quantity) => {
         };
         updateQuantity(shop, itemId, -quantity);
         cart.push(cartItem);
-      } else throw new Error("Not enough stock available");
+      } else throw new Error('Not enough stock available');
     } else {
       updateQuantity(shop, itemId, -quantity);
       updateQuantity(cart, itemId, quantity);
     }
-  } else throw new Error("No Such Item available in the Shop");
+  } else throw new Error('No Such Item available in the Shop');
 };
 
 const updateQuantity = (dataArray, itemId, quantity) => {
@@ -36,16 +36,17 @@ const updateQuantity = (dataArray, itemId, quantity) => {
 };
 
 const availableQuantity = (dataArray, itemId) => {
-  var totalQuantity = 0;
   for (var i in dataArray) {
     if (dataArray[i].itemId === itemId) {
-      dataArray.forEach((item) => {
-        totalQuantity += item.quantity;
-      });
-      break;
+      return dataArray[i].quantity;
     } else continue;
   }
-  return totalQuantity;
+};
+
+const resetStock = (shop) => {
+  for (i in shop) {
+    shop[i].quantity = 50;
+  }
 };
 
 const calculateTotalTax = (cart, taxRate) => {
@@ -94,6 +95,7 @@ module.exports = {
   addItem,
   updateQuantity,
   availableQuantity,
+  resetStock,
   calculateTotal,
   calculateTotalTax,
   calculateTotalWithTax,
