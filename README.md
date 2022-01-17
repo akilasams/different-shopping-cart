@@ -17,7 +17,7 @@ cd server
 npm install
 ```
 
-To run the tests and see test coverage,run the below command
+To run the tests, run the below command
 
 ```bash
 npm test
