@@ -10,27 +10,20 @@ const addItem = (shop, cart, itemId, quantity) => {
   if (itemInShop != null) {
     if (itemInCart == null) {
       if (quantity <= itemInShop.quantity) {
-        // const cartItem = { ...itemInShop, quantity: quantity };
-        // for (var i in shop) {
-        //   if (shop[i].itemId === itemId) {
-        //     shop[i].quantity -= quantity;
-        //     break;
-        //   } else continue;
-        // }
-        updateQuantity;
+        const cartItem = {
+          itemId: itemInShop.itemId,
+          itemName: itemInShop.itemName,
+          unitPrice: itemInShop.unitPrice,
+          quantity: quantity,
+        };
+        updateQuantity(shop, itemId, -quantity);
         cart.push(cartItem);
-      } else throw new Error('Not enough stock available');
+      } else throw new Error("Not enough stock available");
     } else {
-      // for (var i in cart) {
-      //   if (cart[i].itemId === itemId) {
-      //     cart[i].quantity += quantity;
-      //     break;
-      //   } else continue;
-      // }
       updateQuantity(shop, itemId, -quantity);
       updateQuantity(cart, itemId, quantity);
     }
-  } else throw new Error('No Such Item available in the Shop');
+  } else throw new Error("No Such Item available in the Shop");
 };
 
 const updateQuantity = (dataArray, itemId, quantity) => {
@@ -42,11 +35,16 @@ const updateQuantity = (dataArray, itemId, quantity) => {
   }
 };
 
-const quantityInCart = (cart) => {
+const availableQuantity = (dataArray, itemId) => {
   var totalQuantity = 0;
-  cart.forEach((item) => {
-    totalQuantity += item.quantity;
-  });
+  for (var i in dataArray) {
+    if (dataArray[i].itemId === itemId) {
+      dataArray.forEach((item) => {
+        totalQuantity += item.quantity;
+      });
+      break;
+    } else continue;
+  }
   return totalQuantity;
 };
 
@@ -94,7 +92,8 @@ function roundNum(num, length) {
 module.exports = {
   findItem,
   addItem,
-  quantityInCart,
+  updateQuantity,
+  availableQuantity,
   calculateTotal,
   calculateTotalTax,
   calculateTotalWithTax,
